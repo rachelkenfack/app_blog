@@ -1,0 +1,32 @@
+{% extends 'baseUser.html.twig' %}
+
+{% block title %}Hello userController!{% endblock %}
+
+{% block body %}
+         
+      <br><br><br>  <br><br><br>
+         
+            <div class="container">
+         <table border='2' class="table table-striped">
+            <tr class="table-danger">
+                  
+                  </tr>
+                  
+               {% for i in article %}  {# i represente un article#}
+            <div style="background:#EEEEEE  ; color:white; padding:2%; margin:2%"> 
+            <h2 style="color:#ff4e00 " class="text-uppercase">{{i.user.nom}}</h2>
+               <h3 style=" text-align:end " > {{i.CreatedAt|date('j-m-Y')}}</h3>
+                  <h3 style="text-align:end">{{i.UpdatedAt|date('j-m-Y') }}</h3>   
+                  <p style="color:white">{{i.contenu }}</P>
+                     {% for j in i.pieceJointe %}
+                        <img src="{{asset('/images/articles/'~ j.nomFichier)}}" style="width:50%"  class="thumb-image" alt="">
+                        <br><br>
+                     {% endfor %}
+                     
+                  <a  href="{{path('app_commentaire',{'id_article':i.id})}}" class="btn btn-info "> Laisser un commentaire</a>          
+            </div>
+               {% endfor %}
+    </table>
+   
+{% endblock %}
+

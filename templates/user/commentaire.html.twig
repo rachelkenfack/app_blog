@@ -1,0 +1,58 @@
+{% extends 'baseUser.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+
+    <br><br><br><br><br><br>
+
+    <br><br>
+    {% if app.user %} {# ici c'est pour verifier si l'utilisateur est connecter pour effectuer le commentaire #}
+
+{# ici c'est pour recuperer l'article selectionner #}
+
+    <div style="background:#EEEEEE  ; color:white; padding:2%; margin:2%"> 
+             <p style="color:white">{{article.contenu }}</P>
+               <h3 style=" text-align:end " > {{article.CreatedAt|date('j-m-Y')}}</h3>
+                  <h3 style="text-align:end">{{article.UpdatedAt|date('j-m-Y') }}</h3>   
+                 {# ici c'est pour associer a la piece jointe #}
+
+                     {% for j in article.pieceJointe %}
+                        <img src="{{asset('/images/articles/'~ j.nomFichier)}}" style="width:50%"  class="thumb-image" alt="">
+                        <br><br>
+                     {% endfor %}
+                    {# ici c'est pour recuperer les commentaire enregistrer #}
+
+                   {% for commentaire in article_comments %}
+                         <h2>{{commentaire.user.nom}}</h2>{# on utilise la table user cas l'attribut auteur dans comment est lier ae ces deux tab #}
+                         <p>{{commentaire.contenu}}</p>
+                            
+                        {% for piece in article_comments.pieceJointe %}
+                            <img src="{{asset('/images/articles/'~ piece.nomFichier)}}" style="width:50%"  class="thumb-image" alt="">
+                            <br><br>
+                        {% endfor %}
+
+                     {% endfor %}  
+    </div> 
+    <div class="container">
+    <form method='post' action="{{path('app_comment_define',{'id_articles':article.id})}}" enctype='multipart/form-data'> {# pour signaler au form qu'on vas envoyer les fichier binaire non texteul #}
+
+                <div class="form-group">
+                    <label for='comment'>Commentaire</label>
+                    <textarea name='comment' class="form-control " placeholder="saisissez votre commetaires" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label for='piece'>Pieces jointes</label>
+                    <input type='file' name='piece' class="form-control "/>
+                </div>
+            
+                <br>
+                    <div class="form-group">
+                    <input type='submit' value='save'  class="btn btn-info "/>
+                    </div> 
+        </form> 
+</div> 
+        {% else %} 
+        Vous devrez vous connecter afin de laisser un commentaire- <a href="{{path('app_login')}}">login</a> 
+    {% endif %}
+{% endblock %}

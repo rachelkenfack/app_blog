@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<br><br><br><br><br><br>
+<h1>Hello {{ controller_name }}! ✅</h1>
+<br><br>
+<div class="container">
+       
+    <form method='post' action="{{path('app_registration',{'role':'ROLE_USER'})}}" class=" width=50%">
+        <div class="form-group ">
+                <label for='nom'>nom</label>
+                <input type='text' name='nom' class="form-control " required/> 
+                </div>
+            <div>
+                <label for='prenom'>prenom</label>
+                <input type='text' name='prenom' class="form-control " required/>
+            </div>    
+            <div class="form-group">
+                <label for='email'>Adresse Email</label>
+                <input type='Email' name='email' class="form-control width=50% " required/>
+            </div>
+            <div class="form-group">
+                <label for='pass'>mot de passe</label>
+                 <br>
+                <input type='password' name='pass' id='mdp' class="form-control width=50% " required />
+            </div>
+            <div class="form-group">
+                    <label for='pass'>confirmer</label>
+                    <input type='password' name='pass' id='cmdp' class="form-control width=50% " required/>
+                    <br>
+                    <p id='texte'></p>
+                </div>
+                
+            <div class="form-group">
+                <label for='genre'>genre</label>
+                <input type='text' name='genre' class="form-control width=50% " required/>
+            </div>
+            <div class="form-group">
+                <label for='date_nais'>date de naissance</label>
+                <input type='date' name='date_nais' class="form-control width=50% " required/>
+            </div>
+            <div class="form-group">
+                <label for='bio'>biographie</label>
+                <input type='text' name='bio' class="form-control width=50% " required/>
+            </div>
+            
+                <div class="form-group">
+                <input type='submit' value='valider'id="bouton"  class="btn btn-primary mt-4 width=5% "/>
+                </div>
+                
+
+    </form>
+    </div>
+    {% block javascripts %}
+            <script>
+            var pass = document.getElementById('mdp');
+            var confir = document.getElementById('cmdp');
+            var bout=document.getElementById('bouton');
+             var textes=document.getElementById('texte');
+             let passe=pass.length(8,20);
+             alert(textes);
+            bout.addEventListener('click',valide);
+            function valide(){
+                if(passe!==confir){
+                    
+                    passe.textes.InnerHTML='vos mots de passe ne correspondent pas';
+                }else{
+                    confir.textes.InnerHTML='vos mots de passe correspondent';
+                }
+                
+            var regex=/^[a-zA-ZeeéÉÍÍ][a-zééééííí]+([-'\s][a-zA-ZeeéÉÍÍ][a-zééééííí])?/;
+            let email=/@([a-zA-Z0-9_.+-]+)/.[a-zA-Z0-9_.+-] /
+            }
+                 
+            </script> 
+            {% endblock %}
+{% endblock %}

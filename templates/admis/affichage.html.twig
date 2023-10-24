@@ -1,0 +1,49 @@
+{% extends 'baseAdmis.html.twig' %}
+
+{% block title %}Hello adminController!{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper">
+    
+  <br><br><br>  <br><br><br>
+     
+       <div class="container">
+    <table border='2' class="table table-striped">
+        <tr class="table-danger">
+            <th >TITRE </th> 
+             <th>CONTENU</th>
+             <th>CREATED AT</th>
+               <th>UPDATED AT</th>
+               <th>ACTIF</th>
+               <th>PIECES JOINTE</th>
+                <th>ACTION</th>
+                
+        </tr>
+          {% for i in article %}{#i represente l'article1#}
+            <tr> 
+                <td>{{i.titre }}</td>
+                 <td>{{i.contenu }}</td>
+                 <td>{{i.CreatedAt|date('j-m-Y')}}</td>
+                 <td>{{i.UpdatedAt|date('j-m-Y') }}</td>
+                 <td>{{i.actif }}</td>
+                 <td>
+                 {% for j in i.pieceJointe %}{#i represente l'article1 associer a la piece jointe#}
+                   <img src="{{asset('/images/articles/'~ j.nomFichier)}}" style="width:100px"  class="thumb-image" alt="">
+                   <br><br>
+                  {# <a  href="{{path('app_comment')}}"> Laisser un commentaire</a> #}
+                 {% endfor %}
+                 
+                 </td>
+                <td> <a  href="{{path('app_updated',{'id':i.id})}}" class="btn btn-danger">modifier</a>
+                <a onclick=" return confirm('confirme la suppresion'); " href="{{path('app_deleted',{'id':i.id})}}" class="btn btn-danger"> supprimer</a></td>
+            </tr>
+         {% endfor %} 
+      
+    </table>
+    <a href="{{path('app_ajoute')}}" class="btn btn-info">ajouter</a>
+     <br><br><br>
+    </div>
+</div>
+{% endblock %}

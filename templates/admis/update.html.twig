@@ -1,0 +1,34 @@
+{% extends 'baseAdmis.html.twig' %}
+
+{% block title %}Hello AdmisController!{% endblock %}
+
+{% block body %}
+
+
+<br><br><br><br><br><br><br><br>
+<div class="container">
+       {% for msg in app.flashes('notif') %}
+        <div class="alert alert-success">{{msg}}</div>
+       {% endfor %}
+    <form method='post' action="{{path('app_content',{'id':article_recuperer.id})}}" enctype='multipart/form-data'> {# pour signaler au form qu'on vas envoyer les fichier bbinaire non texteul #}
+        <div class="form-group ">
+                <label for='titre'>Titre</label>
+                <textarea name='titre' class="form-control "  >{{article_recuperer.titre}}</textarea>
+             </div>
+            
+            <div class="form-group">
+                <label for='contenu'>contenu</label>
+                <input type='text' name='contenu' class="form-control " value="{{article_recuperer.contenu}}" />
+            </div>
+            <div class="form-group">
+                <label for='piece'>Pieces jointes</label>
+                <input type='file' name='piece' class="form-control " value="{{article_recuperer.piecejointe}}"/>
+            </div>
+            <br><br>
+                <div class="form-group">
+                <input type='submit' value='update'  class="btn btn-primary "/>
+                </div>
+                
+
+    </form>
+{% endblock %}
