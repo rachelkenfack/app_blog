@@ -12,11 +12,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use phpDocumentor\Reflection\Types\Boolean;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Test\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -89,14 +84,28 @@ class AdmisController extends AbstractController
     }
 
     #[Route('/content/{id}', name: 'app_content')]
-    public function formContent($id,Request $request, ArticlesRepository $art, EntityManagerInterface $inter ): Response
+    public function formContent($id,Request $request, ArticlesRepository $art, EntityManagerInterface $inter, PieceJointeRepository $pieceRepos ): Response
     {
-            $val=$request->request->all();
+        $val=$request->request->all();
+        $file=$request->files->get('piece');
+
             $article=$art->find($id);
+
             $article->setTitre($val['titre']);
             $article->setContenu($val['contenu']);
             $article->setUpdatedAt(new \DateTimeImmutable());
             $article->setActif(true);
+           
+          
+            
+            if($file !==null){
+                $file_name=md5(uniqid()).".".$file->guessExtension();
+                $file->move('images/articles',$file_name);
+                // parcouront les piecejointe vue qu'il en exixte plusieurs(collection)
+                foreach($article->getPieceJointe() as $pj){
+                    $pj->setNomFichier($file_name);
+                }
+            }
             $inter->persist($article);
             $inter->flush();
             return $this->redirectToRoute('app_Raffichage');
@@ -109,6 +118,13 @@ class AdmisController extends AbstractController
             $article->setActif(false);
             $enti->remove($article);
             $enti->flush();
+        return $this->redirectToRoute('app_Raffichage');
+        }    
+
+        #[Route('/liste', name: 'app_liste')]
+        public function liste(): Response
+        {
+            
         return $this->redirectToRoute('app_Raffichage');
         }    
     

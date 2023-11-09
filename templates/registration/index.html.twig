@@ -3,51 +3,52 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-<br><br><br><br><br><br>
-<h1>Hello {{ controller_name }}! ✅</h1>
 <br><br>
+<h1 class="text-center">{{ controller_name }}</h1>
+<br><br>
+<div class="bg-image" style="background-image: url('{{asset('/images/articles/blog-5.jpg')}}'); width:auto; background-position: center; background-repeat: no-repeat; background-size: cover;">
 <div class="container">
        
     <form method='post' action="{{path('app_registration',{'role':'ROLE_USER'})}}" class=" width=50%">
         <div class="form-group ">
-                <label for='nom'>nom</label>
+                <label for='nom'style="color:white; font-size:30px">nom</label>
                 <input type='text' name='nom' class="form-control " required/> 
                 </div>
             <div>
-                <label for='prenom'>prenom</label>
+                <label for='prenom'style="color:white; font-size:30px">prenom</label>
                 <input type='text' name='prenom' class="form-control " required/>
             </div>    
             <div class="form-group">
-                <label for='email'>Adresse Email</label>
+                <label for='email'style="color:white; font-size:30px">Adresse Email</label>
                 <input type='Email' name='email' class="form-control width=50% " required/>
             </div>
             <div class="form-group">
-                <label for='pass'>mot de passe</label>
+                <label for='pass'style="color:white; font-size:30px">mot de passe</label>
                  <br>
                 <input type='password' name='pass' id='mdp' class="form-control width=50% " required />
             </div>
             <div class="form-group">
-                    <label for='pass'>confirmer</label>
-                    <input type='password' name='pass' id='cmdp' class="form-control width=50% " required/>
+                    <label for='pass'style="color:white; font-size:30px">confirmer</label>
+                    <input type='password' name='pass' id='cmdp' class="form-control " required/>
                     <br>
                     <p id='texte'></p>
                 </div>
                 
             <div class="form-group">
-                <label for='genre'>genre</label>
+                <label for='genre'style="color:white; font-size:30px">genre</label>
                 <input type='text' name='genre' class="form-control width=50% " required/>
             </div>
             <div class="form-group">
-                <label for='date_nais'>date de naissance</label>
-                <input type='date' name='date_nais' class="form-control width=50% " required/>
+                <label for='date_nais'style="color:white; font-size:30px">date de naissance</label>
+                <input type='date' name='date_nais' class="form-control " required/>
             </div>
             <div class="form-group">
-                <label for='bio'>biographie</label>
+                <label for='bio'style="color:white; font-size:30px">biographie</label>
                 <input type='text' name='bio' class="form-control width=50% " required/>
             </div>
             
                 <div class="form-group">
-                <input type='submit' value='valider'id="bouton"  class="btn btn-primary mt-4 width=5% "/>
+                <input type='submit' value='valider'id="bouton"  class="btn btn-primary "/>
                 </div>
                 
 

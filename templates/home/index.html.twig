@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ma page d'accueilsy!{% endblock %}
+{% block title %}Ma page d'accueil!{% endblock %}
 
 {% block body %}
 <div class="example-wrapper">
-<p> aujourd'hui on est le:{{ "now"| date("m/d/y")}}</p>
-    <h1>Hello {{ controller_name | capitalize }}! ✅</h1>
+ <div class="bg-image" style="background-image: url('{{asset('/images/articles/banner-3.jpg')}}'); height:500px; background-position: center; background-repeat: no-repeat; background-size: cover;">
 
-    ce message viens de
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Diamant noir/Desktop/app_block/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Diamant noir/Desktop/app_block/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
+<br><br><br><br><br><br>
+<p style=" font-size:30px"> aujourd'hui on est le:{{ "now"| date("m/d/y")}}</p>
+    <h1 style="text-align:center; font-size:80px">Hello {{ controller_name | capitalize }}! </h1>
+
+    {# <img src="{{asset('/images/articles/'~ j.nomFichier)}}" style="width:100px"  class="thumb-image" alt=""> #}
+                   
+    
 </div>
 {% endblock %}

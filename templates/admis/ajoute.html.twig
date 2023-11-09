@@ -6,24 +6,26 @@
 
 <br><br><br><br><br><br>
 
-<br><br>
+
+<div class="bg-image" style="background-image: url('{{asset('/images/articles/blog-6.jpg')}}'); height:400px; background-position: center; background-repeat: no-repeat; background-size: cover;">
 <div class="container">
+ 
        {% for msg in app.flashes('notif') %}
         <div class="alert alert-success">{{msg}}</div>
        {% endfor %}
     <form method='post' action="{{path('app_save')}}" enctype='multipart/form-data'> {# pour signaler au form qu'on vas envoyer les fichier bbinaire non texteul #}
         <div class="form-group ">
-                <label for='titre'>Titre</label>
-                <textarea name='titre' class="form-control " > </textarea>
+                <label for='contenu' style="color:white; font-size:50px">contenu</label>
+                <textarea name='contenu' class="form-control " > </textarea>
              </div>
             
             <div class="form-group">
-                <label for='contenu'>contenu</label>
-                <input type='text' name='contenu' class="form-control width=50% " />
+                <label for='titre' style="color:white;font-size:50px">titre</label>
+                <input type='text' name='titre' class="form-control  " />
             </div>
             <div class="form-group">
-                <label for='piece'>Pieces jointes</label>
-                <input type='file' name='piece' class="form-control width=50% "/>
+                <label for='piece' style="color:white;font-size:50px">Pieces jointes</label>
+                <input type='file' name='piece' class="form-control "/>
             </div>
             <br><br>
                 <div class="form-group">

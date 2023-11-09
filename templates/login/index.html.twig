@@ -3,34 +3,33 @@
 {% block title %}Hello Login{% endblock %}
 
 {% block body %}
-   
-    <h2>salut{{controller_name}}</h2>
-     <div class="container">
+<br> <br><br>
+ <div class="example-wrapper">
+    <div class="bg-image" style="background-image: url('{{asset('/images/articles/blog-2.jpg')}}'); width:100%; background-position: center; background-repeat: no-repeat; background-size: cover;">
+        <h2 class="text-center">{{controller_name}}</h2>
+        <div class="container"> <br><br> <br><br> <br>        
+            {% if erreur %}
+                <div class="alert alert-danger">{{ erreur.messageKey|trans(erreur.messageData, 'security') }}</div>
+            {% endif %}
 
-     <br><br> <br><br> <br><br>
-
-                 
-    {% if erreur %}
-        <div class="alert alert-danger">{{ erreur.messageKey|trans(erreur.messageData, 'security') }}</div>
-    {% endif %}
-
-        <form method='post' action="{{path('app_login')}}">
-
-                <div class="form-group">
-                    <label for='email'>Adresse Email</label>
-                    <input type='Email' name='_username' class="form-control"  value={{last}}/>
+                <form method='post' action="{{path('app_login')}}" class="text-center">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for='email'>Adresse Email</label>
+                            <input type='Email' name='_username' class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for='pass'>mot de passe</label>
+                            <input type='password' name='_password' class="form-control"/>
+                        </div>
+                        
+                            <div class="form-group">
+                            <input type='submit' value='valider' class="btn btn-primary-sm " />
+                            </div>
+                    </fieldset>
+                </form>
                 </div>
-                <div class="form-group">
-                    <label for='pass'>mot de passe</label>
-                    <input type='password' name='_password' class="form-control"/>
-                </div>
-                
-                    <div class="form-group">
-                    <input type='submit' value='valider' class="btn btn-primary width=50px" />
-                    </div>
-
-        </form>
         </div>
-        </div>
+     </div>
              
 {% endblock %}

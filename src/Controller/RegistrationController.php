@@ -29,14 +29,14 @@ class RegistrationController extends AbstractController
         $user->setGenre($datas['genre']);
         $user->setDateNaissance(new \DateTime($datas['date_nais']));
         $user_depos->save($user,true);
-        return $this->redirectToRoute('app_look_up');
+        return $this->redirectToRoute('app_lookup');
     }
     
     #[Route('/formul', name: 'app_formul')]
     public function index1(): Response
     {
         return $this->render('registration/index.html.twig', [
-            'controller_name' => 'registrationController',
+            'controller_name' => 'Formulaire d\'inscription',
         ]);
     }
 }
