@@ -29,7 +29,7 @@ class RegistrationController extends AbstractController
         $user->setGenre($datas['genre']);
         $user->setDateNaissance(new \DateTime($datas['date_nais']));
         $user_depos->save($user,true);
-        return $this->redirectToRoute('app_lookup');
+        return $this->redirectToRoute('app_login');
     }
     
     #[Route('/formul', name: 'app_formul')]

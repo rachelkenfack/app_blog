@@ -12,22 +12,22 @@
        <div class="container">
     <table border='2' class="table table-black">
         <tr class="table-danger">
-            <th >TITRE </th> 
-             <th>CONTENU</th>
-             <th>CREATED AT</th>
-               <th>UPDATED AT</th>
-               <th>ACTIF</th>
-               <th>PIECES JOINTE</th>
-                <th>ACTION</th>
+            <th style="color:white">TITRE </th> 
+             <th style="color:white">CONTENU</th>
+             <th style="color:white">CREATED AT</th>
+               <th style="color:white">UPDATED AT</th>
+               <th style="color:white">ACTIF</th>
+               <th style="color:white">PIECES JOINTE</th>
+                <th style="color:white">ACTION</th>
                 
         </tr>
           {% for i in article %}{#i represente l'article1#}
             <tr> 
-                <td>{{i.titre }}</td>
-                 <td>{{i.contenu }}</td>
-                 <td>{{i.CreatedAt|date('j-m-Y')}}</td>
-                 <td>{{i.UpdatedAt|date('j-m-Y') }}</td>
-                 <td>{{i.actif }}</td>
+                <td style="color:white">{{i.titre }}</td>
+                 <td style="color:white">{{i.contenu }}</td>
+                 <td style="color:white">{{i.CreatedAt|date('j-m-Y')}}</td>
+                 <td style="color:white">{{i.UpdatedAt|date('j-m-Y') }}</td>
+                 <td style="color:white">{{i.actif }}</td>
                  <td>
                  {% for j in i.pieceJointe %}{#i represente l'article1 associer a la piece jointe#}
                    <img src="{{asset('/images/articles/'~ j.nomFichier)}}" style="width:100px"  class="thumb-image" alt="">

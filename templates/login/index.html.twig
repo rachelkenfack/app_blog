@@ -6,31 +6,30 @@
 <br> <br><br>
  <div class="example-wrapper">
     <div class="bg-image" style="background-image: url('{{asset('/images/articles/blog-2.jpg')}}'); width:100%; background-position: center; background-repeat: no-repeat; background-size: cover;">
-        <h2 class="text-center">{{controller_name}}</h2>
+        <h2 class="text-center text-danger">{{controller_name}}</h2>
         <div class="container"> <br><br>       
             {% if erreur %}
                 <div class="alert alert-danger">{{ erreur.messageKey|trans(erreur.messageData, 'security') }}</div>
             {% endif %}
-
-                <form method='post' action="{{path('app_login')}}" class="text-center">
-                    <div class="unlogged-input-container">
-                        <input class="unlogged-input" type="email" id="login_mail" data-check="email" name="_username" required placeholder="saisisssez votre adresse email" />
-                        <label class="unlogged-label" for="login_mail">Adresse email</label>
+                
+                <form method='post' action="{{path('app_login')}}" style="text-center">
+                
+                    <div class="col-md-6" style="font-size:15px">
+                    <label for="login_mail">Adresse email</label>
+                        <input class="form-control" type="email"  data-check="email" name="_username" required placeholder="saisisssez votre adresse email" />
+                        
                     </div>
-                        <br> 
-                    <div class="unlogged-input-container">
-                        <input class="unlogged-input unlogged-input-pwd" type="password" id="login_password" name="_password" required placeholder="entrez votre mot de passe"/>
-                        <label class="unlogged-label" for="login_password">Mot de passe</label>
+                        <br>  <br>  <br>  <br> 
+                    <div class="col-md-6" style="font-size:15px">
+                        <label for="login_password">Mot de passe</label>
+                        <input class="form-control" type="password"  name="_password" required placeholder="entrez votre mot de passe"/>
+                        
                     </div>
-                        <br> 
-                    <div class="recaptcha-wrapper">
-                        <div class="recaptcha-container">
-                            <div id="recaptcha_enterprise_container"></div>
-                        </div>
-                    </div>
-
+                        <br> <br>  <br> <br>  <br> 
+                    
                         <button id="login_form_submit" class="tempo-btn tempo-btn-m tempo-btn-primary tempo-btn-width-full gap-m-top" type="submit">Se connecter    </button>
-                   
+                        <br><br>
+    
                 </form>
          </div>
         </div>

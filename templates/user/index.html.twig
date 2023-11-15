@@ -19,8 +19,12 @@
                         <img src="{{asset('/images/articles/'~ j.nomFichier)}}" style="width:50%"  class="thumb-image" alt="">
                         <br><br>
                      {% endfor %}
-                     
-                  <a  href="{{path('app_commentaire',{'id_article':i.id})}}" class="btn btn-info "> Laisser un commentaire</a>          
+                     {% if app.user %} {# ici c'est pour verifier si l'utilisateur est connecter pour effectuer le commentaire #}
+
+                        <a  href="{{path('app_commentaire',{'id_article':i.id})}}" class="btn btn-info "> Laisser un commentaire</a>          
+                    {% else %} 
+                     Vous devrez vous connecter afin de laisser un commentaire- <a href="{{path('app_login')}}">login</a> 
+                  {% endif %} 
             </div>
                {% endfor %}
     </table>

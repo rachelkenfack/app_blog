@@ -36,11 +36,11 @@ class UserController extends AbstractController
             
             'article_comments'=>$articles->getCommentaires(),
             'article'=>$articles
-            ]);
+            ]); //incomprise
         }
 
        #[Route('/comment_define/{$id_articles}', name: 'app_comment_define')]
-    public function comment($id_articles, Request $request, CommentairesRepository $comment_depos, PieceJointeRepository $pieceJ, ArticlesRepository $art, ): Response
+    public function comment($id_articles, Request $request, CommentairesRepository $comment_depos, PieceJointeRepository $pieceJ, ArticlesRepository $art ): Response
     {
        
         $val=$request->request->all();
