@@ -7,7 +7,7 @@
     <br><br><br><br><br><br>
 
     <br><br>
-{% if app.user %} {# ici c'est pour verifier si l'utilisateur est connecter pour effectuer le commentaire #}
+    {% if app.user %} {# ici c'est pour verifier si l'utilisateur est connecter pour effectuer le commentaire #}
 
 {# ici c'est pour recuperer l'article selectionner #}
 
@@ -52,5 +52,7 @@
                     </div> 
         </form> 
 </div> 
-        
+        {% else %} 
+        Vous devrez vous connecter afin de laisser un commentaire- <a href="{{path('app_login')}}">login</a> 
+    {% endif %}
 {% endblock %}
