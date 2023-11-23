@@ -6,54 +6,68 @@
 <br><br>
 <h1 class="text-center">{{ controller_name }}</h1>
 <br><br>
-<div class="bg-image" style="background-image: url('{{asset('/images/articles/blog-5.jpg')}}'); width:auto; background-position: center; background-repeat: no-repeat; background-size: cover;">
+<div class="bg-image" style="background-image: url('{{asset('/images/articles/blog-2.jpg')}}'); width:auto; background-position: center; background-repeat: no-repeat; background-size: cover;">
 <div class="container">
        
-    <form method='post' action="{{path('app_registration',{'role':'ROLE_USER'})}}" class=" width=50%">
-        <div class="form-group ">
-                <label for='nom'style="color:white; font-size:30px">nom</label>
-                <input type='text' name='nom' class="form-control " required/> 
-                </div>
-            <div>
-                <label for='prenom'style="color:white; font-size:30px">prenom</label>
+    <form method='post' action="{{path('app_registration',{'role':'ROLE_USER'})}}">
+        <div class="col-md-6" style="font-size:15px">
+                <label for='nom'style="color:white; font-size:30px">Nom</label>
+                <input type='text' name='nom' class="form-control " style="border-radius:5px; background-color:solf gray;" required/> 
+              </div>
+                
+            <div class="col-md-6" style="font-size:15px">
+                <label for='prenom'style="color:white; font-size:30px">Prenom</label>
                 <input type='text' name='prenom' class="form-control " required/>
-            </div>    
-            <div class="form-group">
+            </div> <br><br>   
+
+            <div class="col-md-6" style="font-size:15px">
                 <label for='email'style="color:white; font-size:30px">Adresse Email</label>
-                <input type='Email' name='email' class="form-control width=50% " required/>
+                <input type='Email' name='email' class="form-control " required/>
             </div>
-            <div class="form-group">
+
+            <div class="col-md-6" style="font-size:15px">
                 <label for='pass'style="color:white; font-size:30px">mot de passe</label>
                  <br>
-                <input type='password' name='pass' id='mdp' class="form-control width=50% " required />
-            </div>
-            <div class="form-group">
+                <input type='password' name='pass' id='mdp' class="form-control" required />
+            </div><br><br>
+            <div class="col-md-6" style="font-size:15px">
                     <label for='pass'style="color:white; font-size:30px">confirmer</label>
                     <input type='password' name='pass' id='cmdp' class="form-control " required/>
-                    <br>
+                    
                     <p id='texte'></p>
                 </div>
                 
-            <div class="form-group">
+            <div class="col-md-6" style="font-size:15px">
                 <label for='genre'style="color:white; font-size:30px">genre</label>
-                <input type='text' name='genre' class="form-control width=50% " required/>
+                <input type='text' name='genre' class="form-control " required/>
+
+                <label for='genre'style="color:white; font-size:30px">Genre</label>  
+                
+                    <select name="religion"  class="form-control" >
+                           <option value="------">-------SELECTIONNER UNE GENRE--------</option>
+                          <option value="masc">Masculin</option>
+                            <option value="fem">Feminin</option>
+                            
+                            </select>
             </div>
-            <div class="form-group">
+            <div class="col-md-6" style="font-size:15px">
                 <label for='date_nais'style="color:white; font-size:30px">date de naissance</label>
                 <input type='date' name='date_nais' class="form-control " required/>
-            </div>
-            <div class="form-group">
-                <label for='bio'style="color:white; font-size:30px">biographie</label>
-                <input type='text' name='bio' class="form-control width=50% " required/>
+            </div><br>
+            <div class="col-md-6" style="font-size:15px">
+                <label for='bio'style="color:white; font-size:30px;">biographie</label>
+                <input type='text' name='bio' class="form-control" required/>
             </div>
             
-                <div class="form-group">
-                <input type='submit' value='valider'id="bouton"  class="btn btn-primary "/>
-                </div>
+                        <button id="registrer_form_submit" class="tempo-btn tempo-btn-m tempo-btn-primary tempo-btn-width-full gap-m-top " type="submit">creer    </button>
+                        <br><br>
+    
                 
 
     </form>
     </div>
+    
+            
     {% block javascripts %}
             <script>
             var pass = document.getElementById('mdp');
@@ -76,5 +90,7 @@
             }
                  
             </script> 
+
+    
             {% endblock %}
 {% endblock %}

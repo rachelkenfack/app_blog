@@ -12,15 +12,17 @@
 {# ici c'est pour recuperer l'article selectionner #}
 
     <div style="background:#EEEEEE  ; color:white; padding:2%; margin:2%"> 
+             <h2 style="color:#ff4e00 " class="text-uppercase">{{article.user.nom}}</h2>
              <p style="color:white">{{article.contenu }}</P>
                <h3 style=" text-align:end " > {{article.CreatedAt|date('j-m-Y')}}</h3>
                   <h3 style="text-align:end">{{article.UpdatedAt|date('j-m-Y') }}</h3>   
                  {# ici c'est pour associer a la piece jointe #}
-
                      {% for j in article.pieceJointe %}
                         <img src="{{asset('/images/articles/'~ j.nomFichier)}}" style="width:50%"  class="thumb-image" alt="">
                         <br><br>
                      {% endfor %}
+
+
                     {# ici c'est pour recuperer les commentaire enregistrer #}
 
                    {% for commentaire in article_comments %}
@@ -39,11 +41,11 @@
 
                 <div class="form-group">
                     <label for='comment'>Commentaire</label>
-                    <textarea name='comment' class="form-control " placeholder="saisissez votre commetaires" ></textarea>
+                    <textarea name='comment' class="form-control col-md-6" placeholder="saisissez votre commetaires" ></textarea>
                 </div>
                 <div class="form-group">
                     <label for='piece'>Pieces jointes</label>
-                    <input type='file' name='piece' class="form-control "/>
+                    <input type='file' name='piece' class="form-control col-md-6 "/>
                 </div>
             
                 <br>

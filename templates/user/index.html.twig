@@ -21,7 +21,8 @@
                      {% endfor %}
                      {% if app.user %} {# ici c'est pour verifier si l'utilisateur est connecter pour effectuer le commentaire #}
 
-                        <a  href="{{path('app_commentaire',{'id_article':i.id})}}" class="btn btn-info "> Laisser un commentaire</a>          
+                        <a  href="{{path('app_commentaire',{'id_article':i.id})}}" class="btn btn-info "> Laisser un commentaire</a> 
+                                 
                     {% else %} 
                      Vous devrez vous connecter afin de laisser un commentaire- <a href="{{path('app_login')}}">login</a> 
                   {% endif %} 

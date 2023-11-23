@@ -69,7 +69,7 @@ class UserController extends AbstractController
 
         $comment_depos->save($comment,true);
         
-        return $this->redirectToRoute('app_commentaire', ['article'=>$article->getId()]);
+        return $this->redirectToRoute('app_commentaire');
 
     }
 
