@@ -25,11 +25,11 @@
 
                     {# ici c'est pour recuperer les commentaire enregistrer #}
 
-                   {% for commentaire in article_comments %}
-                         <h2>{{commentaire.user.nom}}</h2>{# on utilise la table user cas l'attribut auteur dans comment est lier ae ces deux tab #}
+                   {% for commentaire in commentaires %}
+                         <h2>{{commentaire.auteur.nom}}</h2>{# on utilise la table user cas l'attribut auteur dans comment est lier ae ces deux tab #}
                          <p>{{commentaire.contenu}}</p>
                             
-                        {% for piece in article_comments.pieceJointe %}
+                        {% for piece in commentaire.pieceJointe %}
                             <img src="{{asset('/images/articles/'~ piece.nomFichier)}}" style="width:50%"  class="thumb-image" alt="">
                             <br><br>
                         {% endfor %}

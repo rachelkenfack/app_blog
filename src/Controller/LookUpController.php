@@ -13,10 +13,11 @@ class LookUpController extends AbstractController
     #[Route('/', name: 'app_lookup')]
     public function index(): Response
     {
-        if($this->getUser()->getRoles()[0] === 'ROLE_USER'){
+        if($this->getUser()->getRoles()[0] == 'ROLE_USER'){
             return $this->redirectToRoute('app_user');
         }
-        if($this->getUser()->getRoles()[0] === 'ROLE_ADMIN'){
+
+        if($this->getUser()->getRoles()[0] == 'ROLE_ADMIN'){
             return $this->redirectToRoute('app_Admin');
         }
         
