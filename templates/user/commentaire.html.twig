@@ -27,7 +27,8 @@
 
                    {% for commentaire in commentaires %}
                          <h2>{{commentaire.auteur.nom}}</h2>{# on utilise la table user cas l'attribut auteur dans comment est lier ae ces deux tab #}
-                         <p>{{commentaire.contenu}}</p>
+                         <p>{{commentaire.contenu}}</p> 
+                         
                             
                         {% for piece in commentaire.pieceJointe %}
                             <img src="{{asset('/images/articles/'~ piece.nomFichier)}}" style="width:50%"  class="thumb-image" alt="">
