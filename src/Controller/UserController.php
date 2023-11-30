@@ -28,25 +28,27 @@ class UserController extends AbstractController
     }
     
     #[Route('/commentaire/{id_article}', name: 'app_commentaire')]
-    public function commentaire($id_article, ArticlesRepository $article_depos): Response
+    public function commentaire($id_article, ArticlesRepository $article_depos, CommentairesRepository $commentairesRepo): Response
     {
         $articles=$article_depos->find($id_article);
-          
+        // vu que on a l'id de l'article et que nous savons que le commentaire a besoins de l'id de l'article, on va simplement faire une requete sur la table commentaire
+        $commentaires = $commentairesRepo->findBy(['article' => $article_depos->find($id_article)]); // ici on recupere les commentaires lie a l'article dont l'id a ete passer en parametre
+        
             return $this->render('user/commentaire.html.twig',[
             
-            'article_comments'=>$articles->getCommentaires(),
+            'commentaires' => $commentaires, // la on passe les commentaires de cet article a la vue. une fois dans la vue, on va boucle dessus pour les afficher
             'article'=>$articles
             ]); //incomprise
         }
 
-       #[Route('/comment_define/{$id_articles}', name: 'app_comment_define')]
+       #[Route('/comment_define/{id_articles}', name: 'app_comment_define')]
     public function comment($id_articles, Request $request, CommentairesRepository $comment_depos, PieceJointeRepository $pieceJ, ArticlesRepository $art ): Response
     {
        
         $val=$request->request->all();
         // recuperond l'id de l'article
         $article=$art->find($id_articles);
-        dd($article);
+        // dd($article);
        $file=$request->files->get('piece');
        $file_name=md5(uniqid()).".".$file->guessExtension();
        $file->move('images/articles',$file_name);// permet depalcer le fichier dans notre projet
@@ -60,6 +62,9 @@ class UserController extends AbstractController
         $comment=new Commentaires();
         $comment->setAuteur($this->getUser()); // on recupere l'auteur du commentaire
         $comment->setArticle($article);
+
+        // tu as oublier d'ajouter la pieceJointe avec son commentaire. vu que cest un manyToMany, il faut ajouter un commentaire avec la pieces ajouter
+        $comment->addPieceJointe($piece); // ici on ajoute la piece jointe au commentaire en question
         
         $comment->setContenu($val['comment']);
         $comment->getPieceJointe($piece);
@@ -69,7 +74,7 @@ class UserController extends AbstractController
 
         $comment_depos->save($comment,true);
         
-        return $this->redirectToRoute('app_commentaire');
+        return $this->redirectToRoute('app_commentaire',['id_article' => $id_articles]);
 
     }
 

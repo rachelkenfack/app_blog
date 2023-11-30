@@ -5,12 +5,13 @@
 {% block body %}
 
 
-<div class="example-wrapper">
-    <div class="bg-image" style="background-image: url('{{asset('/images/articles/blog-4.jpg')}}'); width:auto; background-position: center; background-repeat: no-repeat; background-size: cover;">
+<div class="example-wrapper" style="font-size:20px">
+<br><br><br>
+    <div class="bg-image" style="background-image: url('{{asset('/images/articles/res-1.jpg')}}'); width:auto; background-position: center; background-repeat: no-repeat; background-size: cover;">
   <br><br><br>  <br><br><br>
      
        <div class="container">
-    <table border='2' class="table table-black">
+    <table class="table table-black">
         <tr class="table-danger">
             <th style="color:white">TITRE </th> 
              <th style="color:white">CONTENU</th>
@@ -23,11 +24,11 @@
         </tr>
           {% for i in article %}{#i represente l'article1#}
             <tr> 
-                <td style="color:white">{{i.titre }}</td>
-                 <td style="color:white">{{i.contenu }}</td>
-                 <td style="color:white">{{i.CreatedAt|date('j-m-Y')}}</td>
-                 <td style="color:white">{{i.UpdatedAt|date('j-m-Y') }}</td>
-                 <td style="color:white">{{i.actif }}</td>
+                <td style="color:black">{{i.titre }}</td>
+                 <td style="color:black">{{i.contenu }}</td>
+                 <td style="color:black">{{i.CreatedAt|date('j-m-Y')}}</td>
+                 <td style="color:black">{{i.UpdatedAt|date('j-m-Y') }}</td>
+                 <td style="color:black">{{i.actif }}</td>
                  <td>
                  {% for j in i.pieceJointe %}{#i represente l'article1 associer a la piece jointe#}
                    <img src="{{asset('/images/articles/'~ j.nomFichier)}}" style="width:100px"  class="thumb-image" alt="">
@@ -36,14 +37,15 @@
                  {% endfor %}
                  
                  </td>
-                <td> <a  href="{{path('app_updated',{'id':i.id})}}" class="btn btn-danger">modifier</a>
-                <a onclick=" return confirm('confirme la suppresion'); " href="{{path('app_deleted',{'id':i.id})}}" class="btn btn-danger"> supprimer</a></td>
+                <td> <a  href="{{path('app_updated',{'id':i.id})}}" class="btn btn-black">modifier</a>
+                <a onclick=" return confirm('confirme la suppresion'); " href="{{path('app_deleted',{'id':i.id})}}" class="btn btn-dark"> supprimer</a></td>
             </tr>
          {% endfor %} 
       
-    </table>
-    <a href="{{path('app_ajoute')}}" class="btn btn-info">ajouter</a>
-     <br><br><br>
+    </table> 
     </div>
-</div>
+    </div>
+    <br><br> <br><br>
+    <a href="{{path('app_ajoute')}}" class="btn btn-info">ajouter</a>
+
 {% endblock %}

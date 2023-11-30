@@ -10,27 +10,27 @@
     {% if app.user %} {# ici c'est pour verifier si l'utilisateur est connecter pour effectuer le commentaire #}
 
 {# ici c'est pour recuperer l'article selectionner #}
-
     <div style="background:#EEEEEE  ; color:white; padding:2%; margin:2%"> 
-             <h2 style="color:#ff4e00 " class="text-uppercase">{{article.user.nom}}</h2>
-             <p style="color:white">{{article.contenu }}</P>
+             <h2 style="color:#ff4e00 " class="text-uppercase">{{article.user.nom}}</h2> {# use ayant effectuer la publication #}
+             <p style="color:black">{{article.contenu }}</P>
                <h3 style=" text-align:end " > {{article.CreatedAt|date('j-m-Y')}}</h3>
                   <h3 style="text-align:end">{{article.UpdatedAt|date('j-m-Y') }}</h3>   
                  {# ici c'est pour associer a la piece jointe #}
                      {% for j in article.pieceJointe %}
-                        <img src="{{asset('/images/articles/'~ j.nomFichier)}}" style="width:50%"  class="thumb-image" alt="">
+                        <img src="{{asset('/images/articles/'~ j.nomFichier)}}" style="width:100%"  class="thumb-image" alt="">
                         <br><br>
                      {% endfor %}
 
 
                     {# ici c'est pour recuperer les commentaire enregistrer #}
 
-                   {% for commentaire in article_comments %}
-                         <h2>{{commentaire.user.nom}}</h2>{# on utilise la table user cas l'attribut auteur dans comment est lier ae ces deux tab #}
-                         <p>{{commentaire.contenu}}</p>
+                   {% for commentaire in commentaires %}
+                         <h2 class="text-uppercase">{{commentaire.auteur.nom}}</h2>{# on utilise la table user cas l'attribut auteur dans comment est lier ae ces deux tab #}
+                         <p style="color:black">{{commentaire.contenu}}</p> 
+                         
                             
-                        {% for piece in article_comments.pieceJointe %}
-                            <img src="{{asset('/images/articles/'~ piece.nomFichier)}}" style="width:50%"  class="thumb-image" alt="">
+                        {% for piece in commentaire.pieceJointe %}
+                            <img src="{{asset('/images/articles/'~ piece.nomFichier)}}" style="width:20%; height:50px"  >
                             <br><br>
                         {% endfor %}
 

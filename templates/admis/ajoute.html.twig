@@ -13,7 +13,7 @@
        {% for msg in app.flashes('notif') %}
         <div class="alert alert-success">{{msg}}</div>
        {% endfor %}
-    <form method='post' action="{{path('app_save')}}" enctype='multipart/form-data'> {# pour signaler au form qu'on vas envoyer les fichier bbinaire non texteul #}
+    <form method='post' action="{{path('app_save')}}" enctype='multipart/form-data'> {# pour signaler au form qu'on vas envoyer les fichier binaire non texteul #}
         
          <div class="form-group">
                 <label for='titre' style="color:white;font-size:50px">titre</label>

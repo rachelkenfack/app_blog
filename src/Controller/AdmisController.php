@@ -127,8 +127,5 @@ class AdmisController extends AbstractController
             
         return $this->redirectToRoute('app_Raffichage');
         }    
-    
-        
-    
        
 }
